@@ -1,0 +1,45 @@
+<body>
+	<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+	<% end %>
+	
+	<% if flash[:alert] %>
+		<p><%= flash[:alert] %></p>
+	<% end %>
+
+	<h1>Books</h1>
+
+	<table>
+			<tr>
+				<th>タイトル</th>
+				<th>レビュー</th>
+			</tr>
+
+			<% @books.each do |books| %>
+		<tr>
+			<td><%= books.title %></td>
+			<td><%= books.body %></td>
+			<td><%= link_to "詳細", book_path(books) %></td>
+			<td><%= link_to "編集", edit_book_path(books) %></td>
+			<td><%= link_to "削除", book_path(books), method: :delete %></td>
+		</tr>
+			<% end %>
+
+	</table>
+
+	<h2>New book</h2>
+
+		<%= form_for(@book) do |book| %>
+
+			<h4> タイトル</h4>
+			<%= book.text_field :title %>
+
+			<h4> レビュー</h4>
+			<%= book.text_area :body %>
+
+			<%= book.submit "投稿" %>
+
+		<% end %>
+
+
+</body>

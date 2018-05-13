@@ -1,0 +1,20 @@
+<body>
+	<% if flash[:alert] %>
+		<p><%= flash[:alert] %></p>
+	<% end %>
+
+	<h1>Editing Book</h1>
+	<%= form_for(@book) do |book| %>
+		<h4>タイトル</h4>
+		<%= book.text_field :title %>
+
+		<h4>レビュー</h4>
+		<%= book.text_area :body %>
+
+		<%= book.submit "保存" %>
+	<% end %>
+
+	<%= link_to "詳細", book_path(@book) %>
+	<%= link_to "戻る", books_path %>
+
+</body>

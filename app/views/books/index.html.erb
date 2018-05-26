@@ -1,4 +1,4 @@
-<body>
+
 	<% if flash[:notice] %>
 		<p><%= flash[:notice] %></p>
 	<% end %>
@@ -21,7 +21,7 @@
 			<td><%= books.body %></td>
 			<td><%= link_to "詳細", book_path(books) %></td>
 			<td><%= link_to "編集", edit_book_path(books) %></td>
-			<td><%= link_to "削除", book_path(books), method: :delete %></td>
+			<td><%= link_to "削除", book_path(books), method: :delete, data: { confirm: '削除しますか？' } %></td>
 		</tr>
 			<% end %>
 
@@ -40,6 +40,3 @@
 			<%= book.submit "投稿" %>
 
 		<% end %>
-
-
-</body>
